@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <title>Calculator</title>
+</head>
+
+<body>
+    <div class="mainWrapper">
+        <div class="calculatorWrapper">
+            <div class="screenBox">
+              <p class="calculationArea">
+                1
+                <span>+</span>
+                1
+              </p>
+      
+              <p class="resultArea">123</p>
+            </div>
+      
+            <div class="buttonsBox">
+              <div class="leftArea">
+                <div class="firstRow">
+                  <button onclick="handleClear()" class="deleteButton"><p>Ac</p></button>
+                  <button onclick="handleDelete()" class="deleteButton"><img src="./assets/delete.svg" alt="deleteIcon" /></button>
+                  <button onclick="handleOperactorSelection(`/`)" class="actionButton"><p>/</p></button>
+                </div>
+      
+                <div class="secondRow">
+                    <button onclick="handleValue(1)" class="regularButton"><p>1</p></button>
+                    <button onclick="handleValue(2)" class="regularButton"><p>2</p></button>
+                    <button onclick="handleValue(3)" class="regularButton"><p>3</p></button>
+                    <button onclick="handleValue(4)" class="regularButton"><p>4</p></button>
+                    <button onclick="handleValue(5)" class="regularButton"><p>5</p></button>
+                    <button onclick="handleValue(6)" class="regularButton"><p>6</p></button>
+                    <button onclick="handleValue(7)" class="regularButton"><p>7</p></button>
+                    <button onclick="handleValue(8)" class="regularButton"><p>8</p></button>
+                    <button onclick="handleValue(9)" class="regularButton"><p>9</p></button>
+                </div>
+      
+                <div class="thirdRow">
+                    <button onclick="handleValue(0)" class="regularButtonWide"><p>0</p></button>
+                    <button onclick="handleFloat(`.`)" class="actionButton"><p>.</p></button>
+                </div>
+              </div>
+      
+              <div class="rightArea">
+                <button onclick="handleOperactorSelection(`*`)" class="actionButton"><p>*</p></button>
+                <button onclick="handleOperactorSelection(`-`)" class="actionButton"><p>-</p></button>
+                <button onclick="handleOperactorSelection(`+`)" class="actionButtonTall"><p>+</p></button>
+                <button onclick="handleResult()" class="actionButtonTall"><p>=</p></button>
+              </div>
+            </div>
+          </div>
+    </div>
+</body>
+
+<script>
+  let  firstValue = [];
+  let  secondValue = [];
+  let  operator = undefined;
+  let  result = undefined;
+
+
+  const handleValue = (number) => {
+    if (operator) {
+        secondValue.push(number);
+        const secondNumber = parseInt(secondValue.join(",").replace(/,/g, ""));
+        console.log("Second Number", secondNumber);
+    } else if (!operator) {
+        firstValue.push(number);
+        const firstNumber = parseInt(firstValue.join(",").replace(/,/g, ""));
+        console.log("First Number", firstNumber);
+    }
+    return;
+  };
+
+  const handleOperactorSelection = (value) => {
+    console.log("Operator", value);
+    operator = value;
+  };
+
+  const handleFloat = (value) => {
+      const firstValueFloat = firstValue.find((element) => element === ".");
+      const secondValueFloat = secondValue.find((element) => element === ".");
+      
+      if (operator) {
+          if (secondValueFloat) return;
+            return secondValue.push(value)
+    } else if (!operator) {
+      if (firstValueFloat) return;
+      firstValue.push(value);
+    }
+    return;
+  };
+
+  const handleResult = () => {
+    const firstNumber = parseInt(firstValue.join(",").replace(/,/g, ""));
+    const secondNumber = parseInt(secondValue.join(",").replace(/,/g, ""));
+
+    if (firstValue && secondValue) {
+        if (operator === "+") {
+        const finalRresult = firstNumber + secondNumber;
+        console.log("Final Result:",finalRresult)
+        return result = finalRresult;
+      } else if (operator === "-") {
+        const finalRresult = firstNumber - secondNumber;
+        console.log("Final Result:",finalRresult)
+        return result = finalRresult;
+      } else if (operator === "*") {
+        const finalRresult = firstNumber * secondNumber;
+        console.log("Final Result:",finalRresult)
+        return result = finalRresult;
+      } else if (operator === "/") {
+        const finalRresult = firstNumber / secondNumber;
+        console.log("Final Result:",finalRresult)
+        return result = finalRresult;
+      }
+    }
+  };
+
+  const handleDelete = () => {
+
+    if (secondValue.length > 0) {
+      secondValue.pop();
+      const secondNumber = parseInt(secondValue.join(",").replace(/,/g, ""));
+      console.log(secondNumber)
+    } else if (firstValue.length > 0) {
+      firstValue.pop();
+      const firstNumber = parseInt(firstValue.join(",").replace(/,/g, ""));
+      console.log(firstNumber)
+    }
+    return;
+  };
+
+  const handleClear = () => {
+    firstValue = []
+    secondValue = []
+    operator = undefined
+    result = undefined
+    console.log("First Value", firstValue, "Second Value", secondValue, "Operator", operator, "Result", result)
+    return;
+  };
+</script>
+</html>

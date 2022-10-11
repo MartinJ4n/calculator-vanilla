@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
+
+body {
+  font-family: 'Rubik', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #A0D7FF;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.mainWrapper {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculatorWrapper {
+    width: 375px;
+    height: 812px;
+    background: linear-gradient(191.34deg, #17181a -4.95%, #17181a 103.74%);
+    border-radius: 40px;
+}
+
+.screenBox {
+    width: 100%;
+    height: 114px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: 138px 0 78px 0;
+    padding: 0 18px;
+}
+
+.calculationArea {
+    color: #818181;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 36px;
+    margin-bottom: 6px;
+}
+
+.calculationArea span {
+    color: #109dff;
+}
+
+.resultArea {
+    color: #ffffff;
+    font-style: normal;
+    font-size: 48px;
+    line-height: 72px;
+}
+
+.buttonsBox {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.leftArea {
+    width: 226px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.firstRow {
+    width: 226px;
+    height: auto;
+    display: flex;
+    gap: 20px;
+}
+
+.secondRow {
+    width: 226px;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.thirdRow {
+    width: 226px;
+    height: auto;
+    display: flex;
+    gap: 20px;
+}
+
+.rightArea {
+    width: 62px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.regularButton {
+    background: #303136;
+    width: 62px;
+    height: 62px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.regularButton p {
+    color: #29A8FF;
+      font-style: normal;
+      font-size: 32px;
+      line-height: 48px;
+}
+
+.regularButtonWide {
+    background: #303136;
+    width: 144px;
+    height: 62px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.regularButtonWide p {
+    color: #29A8FF;
+      font-style: normal;
+      font-size: 32px;
+      line-height: 48px;
+}
+
+.deleteButton {
+    background: #616161;
+    width: 62px;
+    height: 62px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.deleteButton p {
+    color: #A5A5A5;
+      font-style: normal;
+      font-size: 32px;
+      line-height: 48px;
+}
+
+.actionButton {
+    background: #1991FF;
+    width: 62px;
+    height: 62px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.actionButton p {
+    color: #B2DAFF;
+      font-style: normal;
+      font-size: 32px;
+      line-height: 48px;
+}
+
+.actionButtonTall {
+    background: #1991FF;
+    width: 62px;
+    height: 102px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.actionButtonTall p {
+    color: #B2DAFF;
+      font-style: normal;
+      font-size: 32px;
+      line-height: 48px;
+}
