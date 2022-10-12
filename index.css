@@ -55,7 +55,7 @@ code {
     margin-bottom: 6px;
 }
 
-.calculationArea span {
+.calculationArea span:nth-child(2) {
     color: #109dff;
 }
 

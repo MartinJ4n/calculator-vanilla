@@ -13,12 +13,12 @@
         <div class="calculatorWrapper">
             <div class="screenBox">
               <p class="calculationArea">
-                1
-                <span>+</span>
-                1
+                <span id="firstNumber"></span>
+                <span id="operator"></span>
+                <span id="secondNumber"></span>
               </p>
       
-              <p class="resultArea">123</p>
+              <p id="result" class="resultArea"></p>
             </div>
       
             <div class="buttonsBox">
@@ -68,70 +68,99 @@
   const handleValue = (number) => {
     if (operator) {
         secondValue.push(number);
-        const secondNumber = parseInt(secondValue.join(",").replace(/,/g, ""));
-        console.log("Second Number", secondNumber);
+        const secondNumber = Number(secondValue.join(",").replace(/,/g, ""));
+
+        const DOMValue = document.getElementById("secondNumber");
+        DOMValue.innerText = secondNumber
     } else if (!operator) {
         firstValue.push(number);
-        const firstNumber = parseInt(firstValue.join(",").replace(/,/g, ""));
-        console.log("First Number", firstNumber);
+        const firstNumber = Number(firstValue.join(",").replace(/,/g, ""));
+
+        const DOMValue = document.getElementById("firstNumber");
+        DOMValue.innerText = firstNumber
     }
     return;
   };
 
   const handleOperactorSelection = (value) => {
-    console.log("Operator", value);
     operator = value;
+
+    const DOMValue = document.getElementById("operator");
+    DOMValue.innerText = operator
   };
 
   const handleFloat = (value) => {
       const firstValueFloat = firstValue.find((element) => element === ".");
       const secondValueFloat = secondValue.find((element) => element === ".");
-      
+
       if (operator) {
           if (secondValueFloat) return;
-            return secondValue.push(value)
+          secondValue.push(value)
+
+          const secondNumber = Number(secondValue.join(",").replace(/,/g, ""));
+          const DOMValue = document.getElementById("secondNumber");
+          DOMValue.innerText = secondNumber
     } else if (!operator) {
       if (firstValueFloat) return;
       firstValue.push(value);
+
+      const firstNumber = Number(firstValue.join(",").replace(/,/g, ""));
+      const DOMValue = document.getElementById("firstNumber");
+      DOMValue.innerText = firstNumber
     }
     return;
   };
 
   const handleResult = () => {
-    const firstNumber = parseInt(firstValue.join(",").replace(/,/g, ""));
-    const secondNumber = parseInt(secondValue.join(",").replace(/,/g, ""));
+    const firstNumber = Number(firstValue.join(",").replace(/,/g, ""));
+    const secondNumber = Number(secondValue.join(",").replace(/,/g, ""));
 
     if (firstValue && secondValue) {
         if (operator === "+") {
         const finalRresult = firstNumber + secondNumber;
-        console.log("Final Result:",finalRresult)
-        return result = finalRresult;
+        
+        const DOMValue = document.getElementById("result");
+        DOMValue.innerText = finalRresult.toFixed(2).replace(/[.,]00$/, "")
+
+        return result = finalRresult.toFixed(2).replace(/[.,]00$/, "");
       } else if (operator === "-") {
         const finalRresult = firstNumber - secondNumber;
-        console.log("Final Result:",finalRresult)
-        return result = finalRresult;
+        
+        const DOMValue = document.getElementById("result");
+        DOMValue.innerText = finalRresult.toFixed(2).replace(/[.,]00$/, "")
+
+        return result = finalRresult.toFixed(2).replace(/[.,]00$/, "");
       } else if (operator === "*") {
         const finalRresult = firstNumber * secondNumber;
-        console.log("Final Result:",finalRresult)
-        return result = finalRresult;
+        
+        const DOMValue = document.getElementById("result");
+        DOMValue.innerText = finalRresult.toFixed(2).replace(/[.,]00$/, "")
+
+        return result = finalRresult.toFixed(2).replace(/[.,]00$/, "");
       } else if (operator === "/") {
         const finalRresult = firstNumber / secondNumber;
-        console.log("Final Result:",finalRresult)
-        return result = finalRresult;
+        
+        const DOMValue = document.getElementById("result");
+        DOMValue.innerText = finalRresult.toFixed(2).replace(/[.,]00$/, "")
+
+        return result = finalRresult.toFixed(2).replace(/[.,]00$/, "");
       }
     }
   };
 
   const handleDelete = () => {
-
     if (secondValue.length > 0) {
       secondValue.pop();
-      const secondNumber = parseInt(secondValue.join(",").replace(/,/g, ""));
-      console.log(secondNumber)
+      const secondNumber = Number(secondValue.join(",").replace(/,/g, ""));
+      
+      const DOMValue = document.getElementById("secondNumber");
+      DOMValue.innerText = secondNumber
     } else if (firstValue.length > 0) {
       firstValue.pop();
-      const firstNumber = parseInt(firstValue.join(",").replace(/,/g, ""));
-      console.log(firstNumber)
+      const firstNumber = Number(firstValue.join(",").replace(/,/g, ""));
+      
+      const DOMValue = document.getElementById("firstNumber");
+      DOMValue.innerText = firstNumber
     }
     return;
   };
@@ -141,7 +170,17 @@
     secondValue = []
     operator = undefined
     result = undefined
-    console.log("First Value", firstValue, "Second Value", secondValue, "Operator", operator, "Result", result)
+    
+    const DOMValueFirstNumber = document.getElementById("firstNumber");
+    const DOMValueSecondNumber = document.getElementById("secondNumber");
+    const DOMValueOperator = document.getElementById("operator");
+    const DOMValueResult = document.getElementById("result");
+
+    DOMValueFirstNumber.innerText = ""
+    DOMValueSecondNumber.innerText = ""
+    DOMValueOperator.innerText = ""
+    DOMValueResult.innerText = ""
+    
     return;
   };
 </script>
