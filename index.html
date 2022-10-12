@@ -66,6 +66,10 @@
 
 
   const handleValue = (number) => {
+    /**
+     * Based on the 'operator' presence, we either update the 'first value array' or 'second value array'
+     * Then the array is converted into a number and pushed to the DOM.
+     */
     if (operator) {
         secondValue.push(number);
         const secondNumber = Number(secondValue.join(",").replace(/,/g, ""));
@@ -83,6 +87,9 @@
   };
 
   const handleOperactorSelection = (value) => {
+    /**
+     * No fluffy stuff here, just update the operator.
+     */
     operator = value;
 
     const DOMValue = document.getElementById("operator");
@@ -90,6 +97,10 @@
   };
 
   const handleFloat = (value) => {
+    /**
+     * Allow the number to be a float number by pushing a dot into the 'first or second value array'
+     * To prevent multiple dots added the array is filtered and returned prior to the new addition.
+     */
       const firstValueFloat = firstValue.find((element) => element === ".");
       const secondValueFloat = secondValue.find((element) => element === ".");
 
@@ -112,6 +123,10 @@
   };
 
   const handleResult = () => {
+    /**
+     * Basically return the calculated value, and allow two decimal numbers.
+     * However, if these numbers turn out to be .00, they're cut off.
+     */
     const firstNumber = Number(firstValue.join(",").replace(/,/g, ""));
     const secondNumber = Number(secondValue.join(",").replace(/,/g, ""));
     const DOMValue = document.getElementById("result");
@@ -135,6 +150,10 @@
   };
 
   const handleDelete = () => {
+    /**
+     * Deleting the necessary values - 'first value', 'second value', 'operator', 'result' 
+     * depending on the input.
+     */
     if (secondValue.length === 0) {
       const DOMValue = document.getElementById("operator");
       operator = undefined
@@ -149,6 +168,10 @@
 
     if (secondValue.length > 0) {
       secondValue.pop();
+    /**
+      * Error handling: by removing the last element from an array, parseInt returns NaN.
+      * In such case, the 'first value' and 'second value' are set to an empty array. 
+      */
       const secondNumber = parseInt(secondValue.join(",").replace(/,/g, ""));
       const error = isNaN(secondNumber)
       
@@ -166,6 +189,9 @@
   };
 
   const handleClear = () => {
+    /**
+      * Essentially, bringing the default state.
+      */
     firstValue = []
     secondValue = []
     operator = undefined
