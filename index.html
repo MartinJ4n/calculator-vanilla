@@ -114,53 +114,53 @@
   const handleResult = () => {
     const firstNumber = Number(firstValue.join(",").replace(/,/g, ""));
     const secondNumber = Number(secondValue.join(",").replace(/,/g, ""));
+    const DOMValue = document.getElementById("result");
+
 
     if (firstValue && secondValue) {
         if (operator === "+") {
         const finalRresult = firstNumber + secondNumber;
-        
-        const DOMValue = document.getElementById("result");
         DOMValue.innerText = finalRresult.toFixed(2).replace(/[.,]00$/, "")
-
-        return result = finalRresult.toFixed(2).replace(/[.,]00$/, "");
       } else if (operator === "-") {
         const finalRresult = firstNumber - secondNumber;
-        
-        const DOMValue = document.getElementById("result");
         DOMValue.innerText = finalRresult.toFixed(2).replace(/[.,]00$/, "")
-
-        return result = finalRresult.toFixed(2).replace(/[.,]00$/, "");
       } else if (operator === "*") {
         const finalRresult = firstNumber * secondNumber;
-        
-        const DOMValue = document.getElementById("result");
         DOMValue.innerText = finalRresult.toFixed(2).replace(/[.,]00$/, "")
-
-        return result = finalRresult.toFixed(2).replace(/[.,]00$/, "");
       } else if (operator === "/") {
         const finalRresult = firstNumber / secondNumber;
-        
-        const DOMValue = document.getElementById("result");
         DOMValue.innerText = finalRresult.toFixed(2).replace(/[.,]00$/, "")
-
-        return result = finalRresult.toFixed(2).replace(/[.,]00$/, "");
       }
     }
   };
 
   const handleDelete = () => {
+    if (secondValue.length === 0) {
+      const DOMValue = document.getElementById("operator");
+      operator = undefined
+      DOMValue.innerText = ""
+    }
+
+    if (firstValue.length === 0 && secondValue.length === 0) {
+      const DOMValue = document.getElementById("result");
+      result = undefined
+      DOMValue.innerText = ""
+    }
+
     if (secondValue.length > 0) {
       secondValue.pop();
-      const secondNumber = Number(secondValue.join(",").replace(/,/g, ""));
+      const secondNumber = parseInt(secondValue.join(",").replace(/,/g, ""));
+      const error = isNaN(secondNumber)
       
       const DOMValue = document.getElementById("secondNumber");
-      DOMValue.innerText = secondNumber
+      DOMValue.innerText = error ? [] : secondNumber
     } else if (firstValue.length > 0) {
       firstValue.pop();
-      const firstNumber = Number(firstValue.join(",").replace(/,/g, ""));
+      const firstNumber = parseInt(firstValue.join(",").replace(/,/g, ""));
+      const error = isNaN(firstNumber)
       
       const DOMValue = document.getElementById("firstNumber");
-      DOMValue.innerText = firstNumber
+      DOMValue.innerText = error ? [] : firstNumber
     }
     return;
   };
